@@ -1,5 +1,6 @@
 $(function() {
     var instagram_clientId = '8ff397f65c3a4a08950a29b0c1dee1c8';
+    var tags_available = [ 'burger', 'pizza', 'kebab', 'fastfood' ];
 
     var load_image = function(img) {
         var bg = $("#bg"),
@@ -17,7 +18,7 @@ $(function() {
         get: 'tagged',
         tagName: 'pizza',
         clientId: instagram_clientId,
-        limit: 50,
+        limit: 100,
         links: false,
         mock: true,
         success: function(json) {
@@ -32,18 +33,18 @@ $(function() {
                     return true;
                 }
             }
-            console.log("no location in ", pics);
+
+            feed.options.tagName = tags_available[Math.floor(Math.random() * 4)];
             feed.run();
             return false;
         }
     });
 
-    var tags_available = [ 'burger', 'pizza', 'kebab', 'fastfood' ];
 
     window.setInterval(function() {
         feed.options.tagName = tags_available[Math.floor(Math.random() * 4)];
         feed.run();
-    }, 3000);
+    }, 10000);
 
     feed.run();
 })
