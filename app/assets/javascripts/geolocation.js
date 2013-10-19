@@ -7,7 +7,7 @@ $(function() {
     }
 
     var sendLocation = function() {
-
+        $.ajax()
     }
 
     if(navigator.geolocation) {
