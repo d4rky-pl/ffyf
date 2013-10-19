@@ -1,13 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Jogger3</title>
+  <title>FUCK YEAH FAST FOOD</title>
   <%= stylesheet_link_tag    "application", media: "all" %>
   <%= javascript_include_tag "application" %>
 </head>
 <body>
+	<div id="bg"></div>
+	<div id="container">
+	  <header>
+		  <div class="container">
+			  <h1><b>F</b>UCK <b>Y</b>EAH <b>F</b>AST <b>F</b>OOD</h1>
+		  </div>
+	  </header>
 
-<%= yield %>
+		<div class="container">
+		  <%= yield %>
+		</div>
 
+		<div id="push"></div>
+	</div>
+
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+				  <img src="<%= asset_path('railsrumble.png') %>" alt="Rails Rumble 2013"/>
+				</div>
+				<div class="col-md-4">
+					<ul class="navigation">
+						<li><a href="<%= root_path %>">Home</a></li>
+						<li><a href="#">About</a></li>
+						<li><a href="#">FAQ</a></li>
+						<li><a href="#">Help</a></li>
+					</ul>
+				</div>
+				<div class="col-md-4">
+					<!-- Onion Vodka Logo goes here -->
+				</div>
+			</div>
+		</div>
+	</footer>
 </body>
 </html>

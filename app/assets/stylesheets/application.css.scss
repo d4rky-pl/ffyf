@@ -10,5 +10,7 @@
  *
  *= require_self
  *= require_tree .
- *- require twitter/bootstrap
  */
+
+@import 'twitter/bootstrap';
+@import 'layout';
