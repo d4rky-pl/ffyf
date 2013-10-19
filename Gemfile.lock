@@ -52,6 +52,7 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.0.2)
+    geocoder (1.1.8)
     haml (4.0.3)
       tilt
     haml-rails (0.4)
@@ -147,6 +148,7 @@ DEPENDENCIES
   bootstrap-sass-rails
   capistrano (~> 2.15)
   devise
+  geocoder
   haml-rails
   jbuilder (~> 1.2)
   jquery-rails

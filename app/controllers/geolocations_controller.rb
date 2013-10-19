@@ -13,4 +13,10 @@ class GeolocationsController < ApplicationController
   def index
     render :json => session.to_json
   end
+
+  def search
+    search = params[:search]
+
+
+  end
 end
