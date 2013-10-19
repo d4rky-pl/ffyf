@@ -1,0 +1,12 @@
+.box {
+  background: white;
+  padding: 10px;
+}
+
+input.box {
+  background: white;
+  height: 40px;
+  padding: 10px;
+  border: 0;
+  @include box-sizing(border-box);
+}

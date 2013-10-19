@@ -1,6 +1,6 @@
-%h1 Hello
-
-%form{action: 'geolocations/search', method: 'post'}
-  %input{type: 'text', name: 'search'}
-  %input{type: 'submit', value: 'Get coordinates'}
-
+.search-form
+  %form{action: 'geolocations/search', method: 'post'}
+    .col-md-10
+      %input.box{type: 'text', name: 'search'}
+    .col-md-2
+      %button.btn.btn-primary{type: 'submit'} Get coordinates

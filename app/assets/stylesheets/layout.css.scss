@@ -24,6 +24,8 @@ body {
 
 body {
   font-family: 'Helvetica';
+  font-size: 16px;
+  line-height: 24px;
   #bg {
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -43,8 +45,8 @@ body {
       h1 {
         color: #aaa;
         font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
-        height: 100px;
-        line-height: 100px;
+        height: 200px;
+        line-height: 200px;
         text-align: center;
         margin: 0;
         padding: 0;
