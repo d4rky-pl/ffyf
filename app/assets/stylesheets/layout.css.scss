@@ -1,0 +1,98 @@
+// sticky footer
+
+html, body {
+  height: 100%;
+}
+body {
+  #container {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin-bottom: -100px;
+
+    #push {
+      height: 100px;
+    }
+  }
+  > footer {
+    height: 100px;
+  }
+}
+
+
+// header
+
+body {
+  font-family: 'Helvetica';
+  #bg {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 1;
+    background-image: url('http://distilleryimage11.s3.amazonaws.com/036b26e838b511e38d7822000a1fa48d_8.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    -webkit-filter: blur(10px);
+  }
+  #container {
+    z-index: 2;
+    position: relative;
+
+    > header {
+      background: black;
+      box-shadow: 0 0 300px 200px #000;
+      h1 {
+        color: #aaa;
+        font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+        height: 100px;
+        line-height: 100px;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        font-size: 28px;
+        letter-spacing: 2px;
+        b {
+          color: #fff;
+        }
+      }
+    }
+  }
+  > footer {
+    z-index: 2;
+    position: relative;
+    background: rgba(0,0,0,0.5);
+    > .container {
+      padding-top: 20px;
+
+      .navigation {
+        list-style-type: none;
+        height: 65px;
+        line-height: 65px;
+
+        li {
+          display: inline-block;
+          margin-left: 20px;
+          &:before {
+            display: inline-block;
+            content: "•";
+            margin-right: 20px;
+            color: white;
+          }
+          &:first-child {
+            margin-left: 0;
+            &:before {
+              display: none;
+            }
+          }
+
+          a {
+            color: #aaa;
+            &:hover {
+              color: #fff;
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
