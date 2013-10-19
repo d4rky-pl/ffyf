@@ -17,6 +17,11 @@ class GeolocationsController < ApplicationController
   def search
     search = params[:search]
 
-
+    results = Geocoder.search(search)
+    unless results
+      result = results.first
+      coordinates = Coordinates.new(result.latitude, result.longitude)
+      CoordinatesStore.new(session).store(Coordinates)
+    end
   end
 end

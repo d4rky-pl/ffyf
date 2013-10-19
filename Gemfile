@@ -49,6 +49,7 @@ gem 'bootstrap-sass-rails'
 gem 'haml-rails'
 gem 'js-routes'
 gem 'geocoder'
+gem 'gmaps4rails'
 
 group :development do
   gem "binding_of_caller"
