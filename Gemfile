@@ -43,7 +43,6 @@ end
 
 gem 'capistrano', '~> 2.15'
 
-
 # CUSTOM GEMS
 gem 'bootstrap-sass-rails'
 gem 'haml-rails'
@@ -55,6 +54,8 @@ group :development do
   gem "binding_of_caller"
   gem "better_errors"
 end
+
+gem 'instagram'
 
 group :production do
   gem 'pg'
