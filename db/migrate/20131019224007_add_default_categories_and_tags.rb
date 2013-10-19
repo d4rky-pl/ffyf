@@ -10,9 +10,6 @@ class AddDefaultCategoriesAndTags < ActiveRecord::Migration
   def self.up
     if MIGRATION_ENABLED
       @categories.each do |category, tags|
-        puts category
-        puts tags.inspect
-        puts tags.map(&:to_s).join(',')
         Category.create!(
             name: category.to_s,
             tags: tags.map(&:to_s).join(',')

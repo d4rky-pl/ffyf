@@ -22,20 +22,6 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 
 
---
--- Name: postgis; Type: EXTENSION; Schema: -; Owner: -
---
-
-CREATE EXTENSION IF NOT EXISTS postgis WITH SCHEMA public;
-
-
---
--- Name: EXTENSION postgis; Type: COMMENT; Schema: -; Owner: -
---
-
-COMMENT ON EXTENSION postgis IS 'PostGIS geometry, geography, and raster spatial types and functions';
-
-
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -333,27 +319,6 @@ CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (v
 
 
 --
--- Name: geometry_columns_delete; Type: RULE; Schema: public; Owner: -
---
-
-CREATE RULE geometry_columns_delete AS ON DELETE TO geometry_columns DO INSTEAD NOTHING;
-
-
---
--- Name: geometry_columns_insert; Type: RULE; Schema: public; Owner: -
---
-
-CREATE RULE geometry_columns_insert AS ON INSERT TO geometry_columns DO INSTEAD NOTHING;
-
-
---
--- Name: geometry_columns_update; Type: RULE; Schema: public; Owner: -
---
-
-CREATE RULE geometry_columns_update AS ON UPDATE TO geometry_columns DO INSTEAD NOTHING;
-
-
---
 -- PostgreSQL database dump complete
 --
 
@@ -368,8 +333,6 @@ INSERT INTO schema_migrations (version) VALUES ('20131019145300');
 INSERT INTO schema_migrations (version) VALUES ('20131019151013');
 
 INSERT INTO schema_migrations (version) VALUES ('20131019151729');
-
-INSERT INTO schema_migrations (version) VALUES ('20131019214638');
 
 INSERT INTO schema_migrations (version) VALUES ('20131019222027');
 

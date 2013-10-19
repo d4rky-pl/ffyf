@@ -4,18 +4,47 @@ namespace :instagram do
   end
 
   task :get_tags => :init do
-    results = InstagramFetcher.get_by_tag 'kebab', :since => 1.hours.ago
+    tags = categories = nil
+    if ENV['TAGS']
+      tags = ENV['TAGS'].split(',')
+    elsif ENV['CATEGORIES']
+      categories = ENV['CATEGORIES'].split(',')
+    else
+      categories = Category.all
+    end
+
+    unless tags
+      tags = categories.map(&:tag_list).inject([], :+)
+    end
+
+    tags.each { |tag| get_tag(tag) }
+  end
+
+  def get_tag(tag)
+    puts "Getting tag: #{tag}"
+    results = InstagramFetcher.get_by_tag tag, :since => 1.hours.ago
+    tags = Category.reverse_hash
 
     results.each do |photo|
       place = create_place(photo.location)
       if place
-        Photo.create!(
-            url: photo.link,
-            img_url: photo.images.standard_resolution.url,
-            username: photo.user.username,
-            description: photo.caption.text,
-            place: place
-        )
+        begin
+          record = Photo.create!(
+              url: photo.link,
+              img_url: photo.images.standard_resolution.url,
+              username: photo.user.username,
+              description: photo.caption.text,
+              place: place
+          )
+
+          photo.tags.each do |tag|
+            if tags[tag]
+              record.categories << Category.find_by_name(tags[tag])
+            end
+          end
+        rescue
+          # photo might be redundant if with two supported tags
+        end
       end
     end
   end
