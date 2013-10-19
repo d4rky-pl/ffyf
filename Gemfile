@@ -46,6 +46,8 @@ end
 
 gem 'capistrano', '~> 2.15'
 
+gem 'instagram'
+
 group :production do
   gem 'pg'
 end
