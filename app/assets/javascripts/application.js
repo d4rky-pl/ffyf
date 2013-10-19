@@ -13,4 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require js-routes
+//= require instafeed.min
+//= require instagram-bg
 //= require_tree .
