@@ -11,13 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131019123639) do
+ActiveRecord::Schema.define(version: 20131019151729) do
 
-  create_table "places", force: true do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "photos", force: true do |t|
+    t.integer  "place_id"
+    t.string   "url"
+    t.string   "img_url"
+    t.string   "username"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "places", id: false, force: true do |t|
     t.string   "name"
-    t.integer  "id_instagram"
-    t.decimal  "lat"
-    t.decimal  "lng"
+    t.integer  "instagram_id"
+    t.decimal  "lat",          precision: 15, scale: 10
+    t.decimal  "long",         precision: 15, scale: 10
     t.datetime "created_at"
     t.datetime "updated_at"
   end
