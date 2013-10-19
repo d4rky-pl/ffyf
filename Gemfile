@@ -43,3 +43,9 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+gem 'capistrano', '~> 2.15'
+
+group :production do
+  gem 'pg'
+end
