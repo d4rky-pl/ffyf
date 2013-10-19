@@ -2,6 +2,7 @@
 
 html, body {
   height: 100%;
+  background: black;
 }
 body {
   #container {
@@ -23,7 +24,9 @@ body {
 // header
 
 body {
-  font-family: 'Helvetica';
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 16px;
+  line-height: 24px;
   #bg {
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -31,33 +34,51 @@ body {
     background-image: url('http://distilleryimage11.s3.amazonaws.com/036b26e838b511e38d7822000a1fa48d_8.jpg');
     background-size: cover;
     background-attachment: fixed;
-    -webkit-filter: blur(10px);
+    opacity: 0.5;
+    #overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 2;
+      background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAE0lEQVQIW2NkYGDwAWIGRhABAgAEVQBPVHTDwQAAAABJRU5ErkJggg==);
+    }
   }
   #container {
-    z-index: 2;
+    z-index: 3;
     position: relative;
 
     > header {
-      background: black;
-      box-shadow: 0 0 300px 200px #000;
-      h1 {
-        color: #aaa;
-        font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
-        height: 100px;
-        line-height: 100px;
+      @include gradient-vertical(rgba(0,0,0,0.8), rgba(0,0,0,0), 50px);
+      height: 600px;
+      + div.container {
+        margin-top: -420px;
+      }
+
+      h1, h2 {
+        position: absolute;
         text-align: center;
         margin: 0;
         padding: 0;
+        text-shadow: 0 2px 2px #000;
+        width: 100%;
+        left: 0;
+      }
+      h1 {
+        color: #aaa;
+        top: 80px;
         font-size: 28px;
-        letter-spacing: 2px;
+        letter-spacing: 4px;
         b {
           color: #fff;
         }
       }
+      h2 {
+        top: 120px;
+        font-size: 18px;
+      }
     }
   }
   > footer {
-    z-index: 2;
+    z-index: 3;
     position: relative;
     background: rgba(0,0,0,0.5);
     > .container {

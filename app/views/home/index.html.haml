@@ -1,6 +1,35 @@
-%h1 Hello
-
 %form{action: 'geolocations/search', method: 'post'}
-  %input{type: 'text', name: 'search'}
-  %input{type: 'submit', value: 'Get coordinates'}
+  .search-form.row
+    .col-md-10
+      %input.box{type: 'text', name: 'search'}
+    .col-md-2
+      %button.btn.btn-primary{type: 'submit'} Look for food
 
+  .navigation-form.row
+    .col-md-10
+      .types
+        %label.active
+          %input{name: 'burger', type: 'checkbox', :checked => true}
+          Burgers
+        %label
+          %input{name: 'kebab', type: 'checkbox'}
+          Kebabs
+        %label
+          %input{name: 'pizza', type: 'checkbox'}
+          Pizza
+        %label
+          %input{name: 'other', type: 'checkbox'}
+          Other
+    .col-md-2
+      .row
+        .col-md-4
+          -# WARNING H4X
+          -# use .btn-success as active state, NOT .active !
+          %a.btn.btn-success
+            %i.glyphicon.glyphicon-globe
+        .col-md-4
+          %a.btn.btn-default
+            %i.glyphicon.glyphicon-picture
+        .col-md-4
+          %a.btn.btn-default
+            %i.glyphicon.glyphicon-th-list
