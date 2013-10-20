@@ -7,7 +7,7 @@ class HomeController < ApplicationController
 
   def mosaic
     @display_type = :mosaic
-    @places = session[:lat] && session[:lng] ? Place.closest_to(session[:lat], session[:lng]) : {}.to_json
+    @places = session[:lat] && session[:lng] ? Place.closest_to(session[:lat], session[:lng]) : {}.as_json
     @photos = @places.map { |place| place.photos }.flatten.sort_by { rand }
     check_results(@places)
     render 'index'
@@ -15,7 +15,7 @@ class HomeController < ApplicationController
 
   def list
     @display_type = :list
-    @places = session[:lat] && session[:lng] ? Place.closest_to(session[:lat], session[:lng]) : {}.to_json
+    @places = session[:lat] && session[:lng] ? Place.closest_to(session[:lat], session[:lng]) : {}.as_json
     check_results(@places)
     render 'index'
   end
@@ -37,7 +37,6 @@ class HomeController < ApplicationController
                   end
                 end
     @display_type = :map
-    check_results(@map_data)
     render 'index'
   end
 
