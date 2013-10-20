@@ -22,11 +22,19 @@ class HomeController < ApplicationController
 
   def map
     @map_data = if session[:lat] && session[:lng]
-                  Place.close_to(session[:lat], session[:lng]).to_gmaps4rails do |place, marker|
-                    marker.infowindow render_to_string(:partial => "marker_template", :locals => {:place => place})
+                  places = Place.close_to(session[:lat], session[:lng])
+                  if places.empty?
+                    [{:lat => session[:lat], :lng => session[:lng]}].to_json
+                  else
+                    Place.close_to(session[:lat], session[:lng]).to_gmaps4rails do |place, marker|
+                      marker.infowindow render_to_string(:partial => "marker_template", :locals => {:place => place})
+                    end
                   end
                 else
-                  [{:lat => 58.2861851, :lng => 12.2995048}].to_json
+                  # manhattan
+                  Place.close_to(40.7902778, -73.9597222).to_gmaps4rails do |place, marker|
+                    marker.infowindow render_to_string(:partial => "marker_template", :locals => {:place => place})
+                  end
                 end
     @display_type = :map
     check_results(@map_data)
