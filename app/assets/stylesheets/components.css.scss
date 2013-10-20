@@ -1,6 +1,16 @@
+h1.primary {
+  color: $brand-primary;
+  text-shadow: 0 2px 0 #000;
+  margin-bottom: 20px;
+}
+
 .box {
   background: white;
   padding: 10px;
+}
+
+.transparent {
+  color: white;
 }
 
 input.box {
