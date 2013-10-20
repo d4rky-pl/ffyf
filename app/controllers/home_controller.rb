@@ -26,7 +26,7 @@ class HomeController < ApplicationController
                     marker.infowindow render_to_string(:partial => "marker_template", :locals => {:place => place})
                   end
                 else
-                  {}.to_json
+                  [{:lat => 58.2861851, :lng => 12.2995048}].to_json
                 end
     @display_type = :map
     check_results(@map_data)
