@@ -16,7 +16,13 @@ class HomeController < ApplicationController
   end
 
   def map
-    @map_data = session[:lat] && session[:lng] ? Place.close_to(session[:lat], session[:lng]).to_gmaps4rails : []
+    @map_data = if session[:lat] && session[:lng]
+                  Place.close_to(session[:lat], session[:lng]).to_gmaps4rails do |place, marker|
+                    marker.infowindow render_to_string(:partial => "marker_template", :locals => {:place => place})
+                  end
+                else
+                  []
+                end
     @display_type = :map
     check_results(@map_data)
     render 'index'

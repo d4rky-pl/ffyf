@@ -14,8 +14,11 @@ $(function() {
             url: Routes.geolocations_path(),
             data: located,
             success: function(data) {
-                located.address = data.address;
-                $('input[name=search]').val(located.address);
+                var $input = $('input[name=search]');
+                if($input.val() == '') {
+                    located.address = data.address;
+                    $('input[name=search]').val(located.address);
+                }
             }
         })
     };
