@@ -1,12 +1,10 @@
 .search-form {
   >.col-md-10 {
-    padding-right: 0;
     input {
       width: 100%;
     }
   }
   >.col-md-2 {
-    padding-left: 10px;
     button {
       width: 100%;
     }
@@ -15,10 +13,10 @@
 }
 
 .navigation-form {
+  margin-bottom: 50px;
   >.col-md-10 {
-    padding-right: 0;
     .types {
-
+      @include clearfix;
       label {
         display: block;
         float: left;
@@ -47,12 +45,11 @@
         }
       }
     }
-    margin-bottom: 60px;
+    margin-bottom: 10px;
   }
   >.col-md-2 {
-    padding-left: 10px;
     >.row {
-      >.col-md-4 {
+      >.col-xs-4 {
         >a {
           width: 100%;
           height: 40px;
@@ -60,6 +57,165 @@
           padding: 0;
         }
       }
+    }
+  }
+}
+
+.map_container {
+  margin-bottom: 10px;
+}
+
+.places-list {
+  .place {
+    @include clearfix;
+    margin-bottom: 10px;
+    width: 100%;
+    display: block;
+
+    .content {
+
+      .inner {
+        display: block;
+        text-shadow: 0 2px 0 #000;
+        position: relative;
+        @include transition(all 0.1s linear);
+
+        &:hover {
+
+          h1 {
+            color: $brand-primary;
+          }
+
+          .desc {
+            .likes i {
+              color: $brand-success;
+            }
+            .dislikes i {
+              color: saturate($brand-danger, 20%);
+            }
+
+            .likes, .dislikes {
+              b {
+                color: #fff;
+              }
+            }
+          }
+        }
+
+        height: 182px;
+        color: white;
+
+        h1 {
+          @include transition(all 0.1s linear);
+          margin: 0; padding: 0;
+          font-size: 26px;
+          position: absolute;
+          left: 0;
+          top: 60px;
+        }
+        .desc {
+          display: block;
+          @include transition(all 0.1s linear);
+          position: absolute;
+          left: 0;
+          top: 85px;
+
+          .likes, .dislikes {
+            i, b {
+              @include transition(all 0.1s linear);
+              color: #888;
+            }
+          }
+        }
+      }
+    }
+    .thumbnail {
+      display: inline-block;
+      float: right;
+      margin: 0;
+    }
+  }
+}
+
+.place-info {
+  .row {
+    margin-bottom: 10px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .header {
+    position: relative;
+    height: 140px;
+    h1 {
+      position: absolute;
+      left: 0;
+      height: 140px;
+      line-height: 140px;
+      margin: 0; padding: 0;
+      color: $brand-primary;
+      text-shadow: 0 2px 0 #000;
+    }
+    .desc {
+      position: absolute;
+      left: 0;
+      top: 50px;
+
+      @media (min-width: $screen-sm) {
+        left: initial;
+        right: 0;
+        top: 0;
+      }
+      height: 140px;
+      line-height: 140px;
+
+    }
+
+  }
+  // placeholder
+  .map {
+    margin-bottom: 10px;
+  }
+  #place-map {
+    height: 226px;
+    width: 100%;
+    background: url(http://placekitten.com/373/226);
+  }
+  .mosaic {
+    min-height: 500px;
+  }
+  .address {
+    text-align: center;
+    padding: 20px;
+
+    span.name {
+      color: $brand-primary;
+      font-weight: bold;
+    }
+    #address-info {
+
+    }
+  }
+}
+
+.faq {
+  h3 {
+    margin-bottom: 5px;
+  }
+  .transparent {
+    margin-bottom: 50px;
+  }
+}
+
+.about {
+  .thumbnail {
+    .caption {
+      text-align: center;
+    }
+    &:hover {
+      text-decoration: none;
+      background: saturate($brand-warning, 10%);
     }
   }
 }

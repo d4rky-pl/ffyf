@@ -15,4 +15,6 @@
 //= require js-routes
 //= require instafeed.min
 //= require instagram-bg
+//= require twitter/bootstrap
+//= require konami
 //= require_tree .

@@ -1,0 +1,6 @@
+.row.mosaic
+  - @photos.each do |photo|
+    .place.col-md-2
+      %a.thumbnail{:href => "#{place_path(1)}"}
+        %img{:src => photo[:src]}
+        %span.desc= photo[:desc]

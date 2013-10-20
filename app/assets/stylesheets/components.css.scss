@@ -1,6 +1,17 @@
+h1.primary {
+  color: $brand-primary;
+  text-shadow: 0 2px 0 #000;
+  margin-bottom: 20px;
+}
+
 .box {
   background: white;
   padding: 10px;
+}
+
+.transparent {
+  color: white;
+  margin-bottom: 10px;
 }
 
 input.box {
@@ -9,4 +20,76 @@ input.box {
   padding: 10px;
   border: 0;
   @include box-sizing(border-box);
+}
+
+.likes, .dislikes {
+  display: inline-block;
+  cursor: pointer;
+  text-shadow: 0 2px 0 #000;
+
+  i, b {
+    @include transition(all 0.1s linear);
+    color: #888;
+  }
+
+  i {
+    font-size: 32px;
+    top: 8px;
+  }
+  b {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  margin-right: 10px;
+}
+
+.likes.active, .likes:hover, .likes:active {
+  i {
+    color: $brand-success;
+  }
+  b {
+    color: #fff;
+  }
+}
+.dislikes.active, .dislikes:hover, .dislikes:active {
+  i {
+    color: saturate($brand-danger, 20%);
+  }
+  b {
+    color: #fff;
+  }
+}
+
+.mosaic {
+  .thumbnail {
+    margin-bottom: 10px;
+    position: relative;
+    overflow: hidden;
+
+    span.desc {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 0;
+      line-height: 40px;
+      text-align: center;
+      text-wrap: no-wrap;
+      text-overflow: ellipsis;
+      padding: 0 10px;
+      font-size: 12px;
+      background: rgba(0,0,0,0.85);
+      color: white;
+      font-weight: bold;
+      @include transition(all 0.1s linear);
+
+      b {
+        color: $brand-primary;
+      }
+    }
+    &:hover {
+      span.desc {
+        height: 40px;
+      }
+    }
+  }
 }

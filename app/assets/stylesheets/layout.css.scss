@@ -8,14 +8,14 @@ body {
     min-height: 100%;
     height: auto !important;
     height: 100%;
-    margin-bottom: -100px;
+    margin-bottom: -140px;
 
     #push {
-      height: 100px;
+      height: 140px;
     }
   }
   > footer {
-    height: 100px;
+    min-height: 140px;
   }
 }
 
@@ -30,7 +30,7 @@ body {
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
     z-index: 1;
-    background-image: url('http://distilleryimage11.s3.amazonaws.com/036b26e838b511e38d7822000a1fa48d_8.jpg');
+    background-image: url('http://distilleryimage0.ak.instagram.com/ae0ddff42c6311e3a7ab22000a1f97eb_7.jpg');
     background-size: cover;
     background-attachment: fixed;
     opacity: 0.5;
@@ -71,6 +71,7 @@ body {
         }
       }
       h2 {
+        color: #888;
         top: 120px;
         font-size: 18px;
       }
@@ -85,8 +86,8 @@ body {
 
       .navigation {
         list-style-type: none;
-        height: 65px;
-        line-height: 65px;
+        height: 105px;
+        line-height: 105px;
 
         li {
           display: inline-block;

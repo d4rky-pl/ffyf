@@ -1,6 +1,6 @@
 $(function() {
     var instagram_clientId = '8ff397f65c3a4a08950a29b0c1dee1c8';
-    var tags_available = [ 'burger', 'pizza', 'kebab', 'fastfood' ];
+    tags_available = [ 'burger', 'pizza', 'kebab', 'fastfood' ];
 
     var load_image = function(img) {
         var bg = $("#bg"),

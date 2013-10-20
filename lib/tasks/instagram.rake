@@ -4,37 +4,40 @@ namespace :instagram do
   end
 
   task :get_tags => :init do
-    results = InstagramFetcher.get_by_tag 'kebab', :since => 1.hours.ago
+    tags = categories = nil
+    if ENV['TAGS']
+      tags = ENV['TAGS'].split(',')
+    elsif ENV['CATEGORIES']
+      categories = ENV['CATEGORIES'].split(',')
+    else
+      categories = Category.all
+    end
+
+    unless tags
+      tags = categories.map(&:tag_list).inject([], :+)
+    end
+
+    last_photo = Photo.order('created_at DESC').first
+
+    tags.each { |tag| get_tag(tag, :since => last_photo.try(:created_at)) }
+  end
+
+  def get_tag(tag, opts={})
+    logger = File.open("#{Rails.root}/log/instagram_fetcher.log", "a")
+    logger.puts Time.now
+    logger.puts "Getting tag: #{tag}"
+    log_data = {all_photos: 0, no_location: 0, location: 0}
+    results = InstagramFetcher.get_by_tag tag, :since => opts[:since] || 1.month.ago
 
     results.each do |photo|
-      place = create_place(photo.location)
-      if place
-        Photo.create!(
-            url: photo.link,
-            img_url: photo.images.standard_resolution.url,
-            username: photo.user.username,
-            description: photo.caption.text,
-            place: place
-        )
-      end
+      photo = InstagramFetcher.create_photo!(photo)
+      photo ? log_data[:location] += 1 : log_data[:no_location] += 1
+      log_data[:all_photos] += 1
     end
+
+    logger.print "With location: #{log_data[:location]} | "
+    logger.print "No location: #{log_data[:no_location]} | "
+    logger.puts "(all: #{log_data[:all_photos]})"
   end
 
-  def create_place(place)
-    return nil unless place
-    place_record = Place.where(id_instagram: place.id.to_i).first
-    if place_record
-      return place_record
-    else
-      unless place.name.blank? # we don't want those as they might be taken at home or something
-        return Place.create!(
-            id_instagram: place.id.to_i,
-            name: place.name,
-            lat: place.latitude,
-            long: place.longitude
-        )
-      end
-    end
-    return nil
-  end
 end

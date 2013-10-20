@@ -4,14 +4,20 @@ Jogger3::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'home#index'
+  root 'home#map'
 
-  resources :geolocations do
-    member do
-      post 'search'
-    end
-  end
+  get ':action' => 'home', :as => :home, :action => /(map|list|mosaic)/
+  get 'place/:id' => 'home#place', :as => :place
+  get 'team' => 'home#team', :as => :team
+  get 'raq' => 'home#raq', :as => :raq
+  get 'contact' => 'home#contact', :as => :contact
 
+  get 'place/:id/like' => 'home#like_place'
+  get 'place/:id/dislike' => 'home#dislike_place'
+
+
+  resources :geolocations
+  post 'search' => 'geolocations#search'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

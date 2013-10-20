@@ -10,8 +10,11 @@
  *
  */
 
+$grid-gutter-width: 10px;
+
 @import 'twitter/bootstrap';
 @import 'bootstrap-theme';
 @import 'layout';
 @import 'components';
 @import 'specific';
+@import 'maps';
