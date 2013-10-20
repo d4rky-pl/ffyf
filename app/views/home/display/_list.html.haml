@@ -1,4 +1,5 @@
-.places-list.row
+- if @places.size > 0
+  .places-list.row
   - @places.each do |place|
     %a.place{:href => "#{place_path(place)}"}
       .content{:class => "col-md-#{(place.photos.size < 3 && 12 - (place.photos.size*2)) || 6}"}
@@ -16,5 +17,8 @@
           .thumbnail
             %img{:src => photo.lowres_url}
 
-
+- else
+  .row
+    .transparent.text-center
+      %h3 We are sorry but we couldn't find anything nearby :(
 
