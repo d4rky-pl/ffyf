@@ -206,7 +206,9 @@
   #place-map {
     height: 226px;
     width: 100%;
-    background: url(http://placekitten.com/373/226);
+    #map {
+      height: 226px;
+    }
   }
   .mosaic {
     min-height: 500px;

@@ -1,8 +1,13 @@
 class HomeController < ApplicationController
+  before_filter :prepare_address
+
+  def prepare_address
+    @current_address = session[:address] if session[:address]
+  end
 
   def mosaic
     @display_type = :mosaic
-    @places = Place.closest_to(session[:lat], session[:lng])
+    @places = session[:lat] && session[:lng] ? Place.closest_to(session[:lat], session[:lng]) : {}.to_json
     @photos = @places.map { |place| place.photos }.flatten.sort_by { rand }
     check_results(@places)
     render 'index'
@@ -10,7 +15,7 @@ class HomeController < ApplicationController
 
   def list
     @display_type = :list
-    @places = Place.closest_to(session[:lat], session[:lng])
+    @places = session[:lat] && session[:lng] ? Place.closest_to(session[:lat], session[:lng]) : {}.to_json
     check_results(@places)
     render 'index'
   end
@@ -21,7 +26,7 @@ class HomeController < ApplicationController
                     marker.infowindow render_to_string(:partial => "marker_template", :locals => {:place => place})
                   end
                 else
-                  []
+                  {}.to_json
                 end
     @display_type = :map
     check_results(@map_data)
@@ -30,6 +35,7 @@ class HomeController < ApplicationController
 
   def place
     @place = Place.find(params[:id])
+    @map_data = @place.to_gmaps4rails
   end
 
   # TODO: move some content to before filter

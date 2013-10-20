@@ -23,7 +23,7 @@
                 =photo.description
     .col-md-4
       .box.map
-        #place-map
+        #place-map= gmaps4rails(@map_data)
       .box.address
         %span.name
         - if @place.address
