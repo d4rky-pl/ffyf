@@ -1,3 +1,7 @@
 #map {
   height: 500px;
 }
+
+#map_container, #map_container div {
+  overflow: visible;
+}

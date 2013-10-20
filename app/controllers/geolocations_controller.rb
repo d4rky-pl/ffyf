@@ -1,19 +1,21 @@
 class GeolocationsController < ApplicationController
   def create
-    if @user = current_user
-      @user.geolocations.where(:lat => params[:lat], :lng => params[:lng]).first_or_create!
-    end
+    # probably won't be used anyway
+    #if @user = current_user
+    #  @user.geolocations.where(:lat => params[:lat], :lng => params[:lng]).first_or_create!
+    #end
 
-    session[:lat] = params[:lat]
-    session[:lng] = params[:lng]
+    store_in_session(params)
 
     # fixme: always?
     InstagramFetcher.delay.get_foursquare_venues(session[:lat], session[:lng])
 
-    redirect_to :action => 'index'
-  end
+    results = Geocoder.search("#{session[:lat]},#{session[:lng]}")
 
-  def index
+    if results
+      store_in_session(address: results.first.formatted_address)
+    end
+
     render :json => session.to_json
   end
 
@@ -21,10 +23,23 @@ class GeolocationsController < ApplicationController
     search = params[:search]
 
     results = Geocoder.search(search)
-    unless results
+    if results
       result = results.first
-      coordinates = Coordinates.new(result.latitude, result.longitude)
-      CoordinatesStore.new(session).store(Coordinates)
+      store_in_session(
+          {
+              :lat => result.latitude,
+              :lng => result.longitude,
+              :address => result.formatted_address
+          })
+    end
+
+    render :json => session.to_json
+  end
+
+  private
+  def store_in_session(params = {})
+    [:lat, :lng, :address].each do |key|
+      session[key] = params[key] if params[key]
     end
   end
 end

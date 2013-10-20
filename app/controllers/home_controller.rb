@@ -19,16 +19,37 @@ class HomeController < ApplicationController
     render 'index'
   end
 
+  def place
+    @place = {
+      :name => 'Bluegrass BBQ',
+      :likes => 10,
+      :dislikes => 10,
+      :photos => [{:src=>"http://distilleryimage1.s3.amazonaws.com/e01489b0397611e3a94522000a1fbc56_8.jpg", :author=>"alexaviiii", :desc=>"#grill'd #burger #chips #healthyburger", :link=>"http://instagram.com/p/fr9BWDyN1h/"}, {:src=>"http://distilleryimage6.s3.amazonaws.com/9dbf213cf4f411e1aaec22000a1e95c4_7.jpg", :author=>"cs_yap", :desc=>"#nasikunyit", :link=>"http://instagram.com/p/PEmloMBF02/"}]
+    }
+  end
+
+  # TODO: move some content to before filter
+  def like_place
+    place = Place.find(params[:id])
+
+  end
+
+  def dislike_place
+
+  end
+
   #helper_method :photos
   #def photos
   #  # cache for design purpose (until we implement everything properly)
   #  unless @photos
-  #    @photos = InstagramFetcher.get_by_tag("burger", { :since => (Time.now - 1.hour) })
+  #    @photos = InstagramFetcher.get_by_tag("burger", { :since => (Time.now - 5.hour) })
   #    @photos.delete_if { |photo| photo.location.nil? || photo.location.name.nil? }
   #    @photos.map! do |photo|
   #      {
-  #        :src => photo.images.low_resolution.url,
-  #        :desc => photo.location.name
+  #        :src => photo.images.standard_resolution.url,
+  #        :author => photo.user.username,
+  #        :desc => photo.caption.text,
+  #        :link => photo.link
   #      }
   #    end
   #  end

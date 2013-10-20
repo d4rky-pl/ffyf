@@ -4,6 +4,10 @@
   border-radius: 0;
 }
 
+.btn-xs {
+  height: auto;
+}
+
 .btn-default {
   &:hover {
     background: #ccc;

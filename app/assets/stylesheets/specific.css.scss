@@ -13,9 +13,10 @@
 }
 
 .navigation-form {
+  margin-bottom: 50px;
   >.col-md-10 {
     .types {
-
+      @include clearfix;
       label {
         display: block;
         float: left;
@@ -44,46 +45,17 @@
         }
       }
     }
-    margin-bottom: 60px;
+    margin-bottom: 10px;
   }
   >.col-md-2 {
     >.row {
-      >.col-md-4 {
+      >.col-xs-4 {
         >a {
           width: 100%;
           height: 40px;
           line-height: 40px;
           padding: 0;
         }
-      }
-    }
-  }
-}
-
-.mosaic {
-  .thumbnail {
-    margin-bottom: 10px;
-    position: relative;
-    overflow: hidden;
-
-    span.desc {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 0;
-      line-height: 40px;
-      text-align: center;
-      text-wrap: no-wrap;
-      text-overflow: ellipsis;
-      padding: 0 10px;
-      font-size: 12px;
-      background: rgba(0,0,0,0.85);
-      color: white;
-      font-weight: bold;
-      @include transition(all 0.1s linear);
-    }
-    &:hover {
-      span.desc {
-        height: 40px;
       }
     }
   }
@@ -112,10 +84,10 @@
 
           .desc {
             .likes i {
-              color: saturate($brand-danger, 20%);
+              color: $brand-success;
             }
             .dislikes i {
-              color: saturate($brand-warning, 20%);
+              color: saturate($brand-danger, 20%);
             }
 
             .likes, .dislikes {
@@ -145,22 +117,10 @@
           top: 85px;
 
           .likes, .dislikes {
-            display: inline-block;
-
-            i {
-              font-size: 32px;
-              top: 8px;
-            }
-            b {
-              font-size: 16px;
-              font-weight: bold;
-            }
-
             i, b {
               @include transition(all 0.1s linear);
               color: #888;
             }
-            margin-right: 10px;
           }
         }
       }
@@ -169,6 +129,68 @@
       display: inline-block;
       float: right;
       margin: 0;
+    }
+  }
+}
+
+.place-info {
+  .row {
+    margin-bottom: 10px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .header {
+    position: relative;
+    height: 140px;
+    h1 {
+      position: absolute;
+      left: 0;
+      height: 140px;
+      line-height: 140px;
+      margin: 0; padding: 0;
+      color: $brand-primary;
+      text-shadow: 0 2px 0 #000;
+    }
+    .desc {
+      position: absolute;
+      left: 0;
+      top: 50px;
+
+      @media (min-width: $screen-sm) {
+        left: initial;
+        right: 0;
+        top: 0;
+      }
+      height: 140px;
+      line-height: 140px;
+
+    }
+
+  }
+  // placeholder
+  .map {
+    margin-bottom: 10px;
+  }
+  #place-map {
+    height: 226px;
+    width: 100%;
+    background: url(http://placekitten.com/373/226);
+  }
+  .mosaic {
+    min-height: 500px;
+  }
+  .address {
+    text-align: center;
+    padding: 20px;
+
+    span.name {
+      color: $brand-primary;
+      font-weight: bold;
+    }
+    #address-info {
+
     }
   }
 }

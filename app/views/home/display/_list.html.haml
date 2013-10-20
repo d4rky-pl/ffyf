@@ -1,15 +1,15 @@
 .places-list.row
   - @places.each do |name, photos|
-    %a.place{:href => "#"}
+    %a.place{:href => "#{place_path(1)}"}
       .content{:class => "col-md-#{(photos.size < 3 && 12 - (photos.size*2)) || 6}"}
         %span.inner
           %h1= name
           %span.desc
             %span.likes
-              %i.glyphicon.glyphicon-heart
+              %i.glyphicon.glyphicon-thumbs-up
               %b 20
             %span.dislikes
-              %i.glyphicon.glyphicon-flash
+              %i.glyphicon.glyphicon-thumbs-down
               %b 99+
       - photos.sample(3).each do |photo|
         .col-md-2
