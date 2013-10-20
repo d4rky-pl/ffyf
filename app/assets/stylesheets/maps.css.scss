@@ -1,5 +1,6 @@
 #map {
   height: 500px;
+  background: url(asset_path('loader.gif', image)) 50% 50% rgba(0,0,0,0.5) no-repeat;
 }
 
 #map_container, #map_container div {
