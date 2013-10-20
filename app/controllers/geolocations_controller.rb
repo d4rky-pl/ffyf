@@ -7,9 +7,6 @@ class GeolocationsController < ApplicationController
 
     store_in_session(params)
 
-    # fixme: always?
-    InstagramFetcher.delay.get_foursquare_venues(session[:lat], session[:lng])
-
     results = Geocoder.search("#{session[:lat]},#{session[:lng]}")
 
     if results
@@ -32,6 +29,9 @@ class GeolocationsController < ApplicationController
               :address => result.formatted_address
           })
     end
+
+    # fixme: always?
+    InstagramFetcher.delay.get_foursquare_venues(session[:lat], session[:lng])
 
     render :json => session.to_json
   end

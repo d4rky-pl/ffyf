@@ -36,7 +36,6 @@ class InstagramFetcher
         photos = Instagram.location_recent_media(instagram_location_id, :count => 25)
         photos.each |photo|
             photos_added += 1 if InstagramFetcher.create_photo!(photo)
-        end
       end
     end
   end
