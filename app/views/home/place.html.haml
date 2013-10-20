@@ -13,19 +13,19 @@
   .row
     .mosaic.col-md-8
       .row
-        - (@fake_photos * 3).each do |photo|
+        - (@place.photos).each do |photo|
           .place.col-md-4
-            %a.thumbnail{:href => "#{photo[:link]}"}
-              %img{:src => photo[:src]}
+            %a.thumbnail{:href => "#{photo.url}"}
+              %img{:src => photo.lowres_url}
               %span.desc
-                %b<>= "@#{photo[:author]}:"
+                %b<>= "@#{photo.username}:"
                 &nbsp;
-                =photo[:desc]
+                =photo.description
     .col-md-4
       .box.map
         #place-map
       .box.address
-        %span.name Bluegrass BBQ
+        %span.name= @place.name
         <br>
         Lubostroń 20
         <br>
