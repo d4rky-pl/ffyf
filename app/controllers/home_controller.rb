@@ -64,9 +64,9 @@ class HomeController < ApplicationController
   def check_results(result_set, min=5)
     if result_set.length < 5 && session[:lat] && session[:lng] && flash[:from_search]
       # fixme: always?
-      InstagramFetcher.delay.get_foursquare_venues(session[:lat], session[:lng])
+      job = InstagramFetcher.delay.get_foursquare_venues(session[:lat], session[:lng])
 
-      flash[:search] = true
+      flash[:job_id] = job.id
     end
   end
 end

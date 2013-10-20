@@ -15,6 +15,7 @@ Jogger3::Application.routes.draw do
   post 'place/:id/like' => 'home#like_place', :as => :like
   post 'place/:id/dislike' => 'home#dislike_place', :as => :dislike
 
+  get 'job/:id' => 'jobs#poll', :as => :job
 
   resources :geolocations
   post 'search' => 'geolocations#search'

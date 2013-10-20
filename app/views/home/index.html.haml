@@ -34,10 +34,9 @@
           %a.btn{:href => "#{home_path(:list)}", :class => "#{(@display_type == :list && 'btn-success') || 'btn-default'}"}
             %i.glyphicon.glyphicon-th-list
 
-- if flash[:search]
-  .search-notification
+- if flash[:job_id]
+  .search-notification{:data => {:job_id => flash[:job_id]}}
     %h1.intense [[ heavy processing intensifies ]]
     %h2 We've never visited your place before so it may take us a moment to process your query. Please, give us a minute.
-
 
 = render :partial => "home/display/#{@display_type.to_s}"
