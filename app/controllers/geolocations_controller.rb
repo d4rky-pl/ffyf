@@ -30,10 +30,7 @@ class GeolocationsController < ApplicationController
           })
     end
 
-    # fixme: always?
-    InstagramFetcher.delay.get_foursquare_venues(session[:lat], session[:lng])
-
-    render :json => session.to_json
+    redirect_to :back
   end
 
   private

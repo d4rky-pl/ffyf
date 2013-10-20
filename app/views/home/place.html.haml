@@ -13,14 +13,14 @@
   .row
     .mosaic.col-md-8
       .row
-        - (@fake_photos * 3).each do |photo|
+        - (@place.photos).each do |photo|
           .place.col-md-4
-            %a.thumbnail{:href => "#{photo[:link]}"}
-              %img{:src => photo[:src]}
+            %a.thumbnail{:href => "#{photo.url}"}
+              %img{:src => photo.lowres_url}
               %span.desc
-                %b<>= "@#{photo[:author]}:"
+                %b<>= "@#{photo.username}:"
                 &nbsp;
-                =photo[:desc]
+                =photo.description
     .col-md-4
       .box.map
         #place-map
@@ -28,6 +28,7 @@
         %span.name
         - @place.address.split(',').each do |part|
           ="#{part}"
+          %br
         %a.btn.btn-default.btn-xs#address-info{'data-toggle' => 'tooltip', :title => "We've calculated this address using geographic coordinates which is not exactly an exact science."}<>
           This information may not be accurate
           %i.glyphicon.glyphicon-question-sign
