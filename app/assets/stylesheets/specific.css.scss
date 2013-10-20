@@ -84,10 +84,10 @@
 
           .desc {
             .likes i {
-              color: saturate($brand-danger, 20%);
+              color: $brand-success;
             }
             .dislikes i {
-              color: saturate($brand-warning, 20%);
+              color: saturate($brand-danger, 20%);
             }
 
             .likes, .dislikes {
