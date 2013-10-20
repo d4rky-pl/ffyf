@@ -1,5 +1,2 @@
-- if JSON.parse(@map_data).empty?
-
-- else
-
+- unless JSON.parse(@map_data).empty?
   = gmaps4rails(@map_data)
