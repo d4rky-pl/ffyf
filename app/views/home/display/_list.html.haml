@@ -7,10 +7,10 @@
           %span.desc
             %span.likes
               %i.glyphicon.glyphicon-thumbs-up
-              %b 20
+              %b= place.likes
             %span.dislikes
               %i.glyphicon.glyphicon-thumbs-down
-              %b 99+
+              %b= place.dislikes
       - place.photos.sample(3).each do |photo|
         .col-md-2
           .thumbnail

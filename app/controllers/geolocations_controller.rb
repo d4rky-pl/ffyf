@@ -29,6 +29,7 @@ class GeolocationsController < ApplicationController
               :address => result.formatted_address
           })
     end
+    flash[:from_search] = true
 
     redirect_to :back
   end

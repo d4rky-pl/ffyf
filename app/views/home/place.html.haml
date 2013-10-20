@@ -26,9 +26,10 @@
         #place-map
       .box.address
         %span.name
-        - @place.address.split(',').each do |part|
-          ="#{part}"
-          %br
+        - if @place.address
+          - @place.address.split(',').each do |part|
+            = part
+            %br
         %a.btn.btn-default.btn-xs#address-info{'data-toggle' => 'tooltip', :title => "We've calculated this address using geographic coordinates which is not exactly an exact science."}<>
           This information may not be accurate
           %i.glyphicon.glyphicon-question-sign
