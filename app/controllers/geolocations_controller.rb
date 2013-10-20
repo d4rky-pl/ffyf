@@ -20,7 +20,7 @@ class GeolocationsController < ApplicationController
     search = params[:search]
 
     results = Geocoder.search(search)
-    if results
+    if !results.empty?
       result = results.first
       store_in_session(
           {
@@ -28,7 +28,10 @@ class GeolocationsController < ApplicationController
               :lng => result.longitude,
               :address => result.formatted_address
           })
+    else
+      redirect_to :back and return
     end
+
     flash[:from_search] = true
 
     redirect_to :back
