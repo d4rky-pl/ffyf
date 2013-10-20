@@ -155,10 +155,19 @@
     }
     .desc {
       position: absolute;
-      right: 0;
+      left: 0;
+      top: 50px;
+
+      @media (min-width: $screen-sm) {
+        left: initial;
+        right: 0;
+        top: 0;
+      }
       height: 140px;
       line-height: 140px;
+
     }
+
   }
   // placeholder
   .map {

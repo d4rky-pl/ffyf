@@ -8,14 +8,14 @@ body {
     min-height: 100%;
     height: auto !important;
     height: 100%;
-    margin-bottom: -100px;
+    margin-bottom: -140px;
 
     #push {
-      height: 100px;
+      height: 140px;
     }
   }
   > footer {
-    height: 100px;
+    min-height: 140px;
   }
 }
 
@@ -71,6 +71,7 @@ body {
         }
       }
       h2 {
+        color: #888;
         top: 120px;
         font-size: 18px;
       }
@@ -85,8 +86,8 @@ body {
 
       .navigation {
         list-style-type: none;
-        height: 65px;
-        line-height: 65px;
+        height: 105px;
+        line-height: 105px;
 
         li {
           display: inline-block;
