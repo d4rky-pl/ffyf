@@ -64,4 +64,5 @@ group :production do
 end
 
 gem 'devise'
+gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 # END CUSTOM
