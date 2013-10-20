@@ -13,6 +13,13 @@ input.box {
 
 .likes, .dislikes {
   display: inline-block;
+  cursor: pointer;
+  text-shadow: 0 2px 0 #000;
+
+  i, b {
+    @include transition(all 0.1s linear);
+    color: #888;
+  }
 
   i {
     font-size: 32px;
@@ -21,17 +28,26 @@ input.box {
   b {
     font-size: 16px;
     font-weight: bold;
-    color: #fff;
   }
 
   margin-right: 10px;
 }
 
-.likes i {
-  color: saturate($brand-danger, 20%);
+.likes.active, .likes:hover, .likes:active {
+  i {
+    color: $brand-success;
+  }
+  b {
+    color: #fff;
+  }
 }
-.dislikes i {
-  color: saturate($brand-warning, 20%);
+.dislikes.active, .dislikes:hover, .dislikes:active {
+  i {
+    color: saturate($brand-danger, 20%);
+  }
+  b {
+    color: #fff;
+  }
 }
 
 .mosaic {
