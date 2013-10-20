@@ -16,6 +16,7 @@ class HomeController < ApplicationController
   def map
     @display_type = :map
     render 'index'
+  end
 
   def index
     @map_data = Place.all.to_gmaps4rails
