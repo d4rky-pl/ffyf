@@ -25,12 +25,9 @@
       .box.map
         #place-map
       .box.address
-        %span.name Bluegrass BBQ
-        <br>
-        Lubostroń 20
-        <br>
-        30-383 Kraków
-        <br>
+        %span.name
+        - @place.address.split(',').each do |part|
+          ="#{part}"
         %a.btn.btn-default.btn-xs#address-info{'data-toggle' => 'tooltip', :title => "We've calculated this address using geographic coordinates which is not exactly an exact science."}<>
           This information may not be accurate
           %i.glyphicon.glyphicon-question-sign

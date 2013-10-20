@@ -7,7 +7,7 @@ class Place < ActiveRecord::Base
   after_save :fetch_address
 
   def fetch_address
-    adr = Geocoder.search("#{self.lat},#{self.long}").first.formatted_address
-    record.address = adr
+    adr = Geocoder.search("#{self.lat},#{self.long}").try(:first).try(:formatted_address)
+    self.address = adr
   end
 end
