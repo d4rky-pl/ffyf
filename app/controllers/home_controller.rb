@@ -20,22 +20,31 @@ class HomeController < ApplicationController
   end
 
   def place
-    @place = {
-      :name => 'Bluegrass BBQ',
-      :likes => 10,
-      :dislikes => 10,
-      :photos => [{:src=>"http://distilleryimage1.s3.amazonaws.com/e01489b0397611e3a94522000a1fbc56_8.jpg", :author=>"alexaviiii", :desc=>"#grill'd #burger #chips #healthyburger", :link=>"http://instagram.com/p/fr9BWDyN1h/"}, {:src=>"http://distilleryimage6.s3.amazonaws.com/9dbf213cf4f411e1aaec22000a1e95c4_7.jpg", :author=>"cs_yap", :desc=>"#nasikunyit", :link=>"http://instagram.com/p/PEmloMBF02/"}]
-    }
+    @place = Place.first
+    @fake_photos = [{:src=>"http://distilleryimage1.s3.amazonaws.com/e01489b0397611e3a94522000a1fbc56_8.jpg", :author=>"alexaviiii", :desc=>"#grill'd #burger #chips #healthyburger", :link=>"http://instagram.com/p/fr9BWDyN1h/"}, {:src=>"http://distilleryimage6.s3.amazonaws.com/9dbf213cf4f411e1aaec22000a1e95c4_7.jpg", :author=>"cs_yap", :desc=>"#nasikunyit", :link=>"http://instagram.com/p/PEmloMBF02/"}]
+
+    #@place = {
+    #  :name => 'Bluegrass BBQ',
+    #  :likes => 10,
+    #  :dislikes => 10,
+    #  :photos => [{:src=>"http://distilleryimage1.s3.amazonaws.com/e01489b0397611e3a94522000a1fbc56_8.jpg", :author=>"alexaviiii", :desc=>"#grill'd #burger #chips #healthyburger", :link=>"http://instagram.com/p/fr9BWDyN1h/"}, {:src=>"http://distilleryimage6.s3.amazonaws.com/9dbf213cf4f411e1aaec22000a1e95c4_7.jpg", :author=>"cs_yap", :desc=>"#nasikunyit", :link=>"http://instagram.com/p/PEmloMBF02/"}]
+    #}
   end
 
   # TODO: move some content to before filter
   def like_place
     place = Place.find(params[:id])
-
+    place.likes = place.likes + 1
+    place.save!
+    render :json => place.likes.to_json
   end
 
+  # copy-past da best
   def dislike_place
-
+    place = Place.find(params[:id])
+    place.dislikes = place.dislikes + 1
+    place.save!
+    render :json => place.dislikes.to_json
   end
 
   #helper_method :photos

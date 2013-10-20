@@ -1,19 +1,19 @@
-.place-info
+.place-info{data: {id: @place.id}}
   .row
     .col-md-12.header
-      %h1= @place[:name]
+      %h1= @place.name
       %span.desc
         %span.likes
           %i.glyphicon.glyphicon-thumbs-up
-          %b 20
+          %b= @place.likes
         %span.dislikes
           %i.glyphicon.glyphicon-thumbs-down
-          %b 99+
+          %b= @place.dislikes
 
   .row
     .mosaic.col-md-8
       .row
-        - (@place[:photos] * 3).each do |photo|
+        - (@fake_photos * 3).each do |photo|
           .place.col-md-4
             %a.thumbnail{:href => "#{photo[:link]}"}
               %img{:src => photo[:src]}

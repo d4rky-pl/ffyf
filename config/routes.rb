@@ -12,8 +12,8 @@ Jogger3::Application.routes.draw do
   get 'raq' => 'home#raq', :as => :raq
   get 'contact' => 'home#contact', :as => :contact
 
-  get 'place/:id/like' => 'home#like_place'
-  get 'place/:id/dislike' => 'home#dislike_place'
+  post 'place/:id/like' => 'home#like_place', :as => :like
+  post 'place/:id/dislike' => 'home#dislike_place', :as => :dislike
 
 
   resources :geolocations
