@@ -1,8 +1,13 @@
-.mosaic
-  - @photos.each_slice(6) do |slice|
-    .row
-      - slice.each do |photo|
-        .place.col-md-2
-          %a.thumbnail{:href => "#{place_path(photo.place_id)}"}
-            %img{:src => photo.lowres_url}
-            %span.desc= photo.description
+- if @photos.size > 0
+  .mosaic
+    - @photos.each_slice(6) do |slice|
+      .row
+        - slice.each do |photo|
+          .place.col-md-2
+            %a.thumbnail{:href => "#{place_path(photo.place_id)}"}
+              %img{:src => photo.lowres_url}
+              %span.desc= photo.description
+- else
+  .row
+    .transparent.text-center
+      %h3 We are sorry but we couldn't find anything nearby :(
