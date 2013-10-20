@@ -7,6 +7,7 @@ Jogger3::Application.routes.draw do
   root 'home#map'
 
   get ':action' => 'home', :as => :home, :action => /(map|list|mosaic)/
+  get 'place/:id' => 'home#place', :as => :place
 
   resources :geolocations do
     member do

@@ -10,3 +10,59 @@ input.box {
   border: 0;
   @include box-sizing(border-box);
 }
+
+.likes, .dislikes {
+  display: inline-block;
+
+  i {
+    font-size: 32px;
+    top: 8px;
+  }
+  b {
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+  }
+
+  margin-right: 10px;
+}
+
+.likes i {
+  color: saturate($brand-danger, 20%);
+}
+.dislikes i {
+  color: saturate($brand-warning, 20%);
+}
+
+.mosaic {
+  .thumbnail {
+    margin-bottom: 10px;
+    position: relative;
+    overflow: hidden;
+
+    span.desc {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 0;
+      line-height: 40px;
+      text-align: center;
+      text-wrap: no-wrap;
+      text-overflow: ellipsis;
+      padding: 0 10px;
+      font-size: 12px;
+      background: rgba(0,0,0,0.85);
+      color: white;
+      font-weight: bold;
+      @include transition(all 0.1s linear);
+
+      b {
+        color: $brand-primary;
+      }
+    }
+    &:hover {
+      span.desc {
+        height: 40px;
+      }
+    }
+  }
+}

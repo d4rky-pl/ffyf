@@ -1,8 +1,8 @@
 %form{action: 'geolocations/search', method: 'post'}
   .search-form.row
-    .col-md-10
+    .col-md-10.col-xs-8
       %input.box{type: 'text', name: 'search'}
-    .col-md-2
+    .col-md-2.col-xs-4
       %button.btn.btn-primary{type: 'submit'} Look for food
 
   .navigation-form.row
@@ -22,15 +22,15 @@
           Other
     .col-md-2
       .row
-        .col-md-4
+        .col-xs-4
           -# WARNING H4X
           -# use .btn-success as active state, NOT .active !
           %a.btn{:href => "#{home_path(:map)}", :class => "#{(@display_type == :map && 'btn-success') || 'btn-default'}"}
             %i.glyphicon.glyphicon-globe
-        .col-md-4
+        .col-xs-4
           %a.btn{:href => "#{home_path(:mosaic)}", :class => "#{(@display_type == :mosaic && 'btn-success') || 'btn-default'}"}
             %i.glyphicon.glyphicon-picture
-        .col-md-4
+        .col-xs-4
           %a.btn{:href => "#{home_path(:list)}", :class => "#{(@display_type == :list && 'btn-success') || 'btn-default'}"}
             %i.glyphicon.glyphicon-th-list
 

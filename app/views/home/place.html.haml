@@ -1,0 +1,36 @@
+.place-info
+  .row
+    .col-md-12.header
+      %h1= @place[:name]
+      %span.desc
+        %span.likes
+          %i.glyphicon.glyphicon-heart
+          %b 20
+        %span.dislikes
+          %i.glyphicon.glyphicon-flash
+          %b 99+
+
+  .row
+    .mosaic.col-md-8
+      .row
+        - (@place[:photos] * 3).each do |photo|
+          .place.col-md-4
+            %a.thumbnail{:href => "#{photo[:link]}"}
+              %img{:src => photo[:src]}
+              %span.desc
+                %b<>= "@#{photo[:author]}:"
+                &nbsp;
+                =photo[:desc]
+    .col-md-4
+      .box.map
+        #place-map
+      .box.address
+        %span.name Bluegrass BBQ
+        <br>
+        Lubostroń 20
+        <br>
+        30-383 Kraków
+        <br>
+        %a.btn.btn-default.btn-xs#address-info{'data-toggle' => 'tooltip', :title => "We've calculated this address using geographic coordinates which is not exactly an exact science."}<>
+          This information may not be accurate
+          %i.glyphicon.glyphicon-question-sign
