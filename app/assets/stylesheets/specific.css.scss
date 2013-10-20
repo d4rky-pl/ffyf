@@ -198,3 +198,20 @@
     }
   }
 }
+
+.about {
+  h1 {
+    color: $brand-primary;
+    text-shadow: 0 2px 0 #000;
+    margin-bottom: 20px;
+  }
+  .thumbnail {
+    .caption {
+      text-align: center;
+    }
+    &:hover {
+      text-decoration: none;
+      background: saturate($brand-warning, 10%);
+    }
+  }
+}
