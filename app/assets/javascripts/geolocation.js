@@ -14,7 +14,6 @@ $(function() {
             url: Routes.geolocations_path(),
             data: located,
             success: function() {
-                console.log('aaa');
             }
         })
     }

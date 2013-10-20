@@ -34,4 +34,8 @@
           %a.btn{:href => "#{home_path(:list)}", :class => "#{(@display_type == :list && 'btn-success') || 'btn-default'}"}
             %i.glyphicon.glyphicon-th-list
 
+<<<<<<< Updated upstream
 = render :partial => "home/display/#{@display_type.to_s}"
+=======
+%div#map= render('home/display/map')
+>>>>>>> Stashed changes
