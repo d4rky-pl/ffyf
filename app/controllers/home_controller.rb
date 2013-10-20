@@ -16,7 +16,6 @@ class HomeController < ApplicationController
   def map
     @map_data = Place.all.to_gmaps4rails
     @display_type = :map
-    @map_data = Place.all.to_gmaps4rails
     render 'index'
   end
 
@@ -25,7 +24,7 @@ class HomeController < ApplicationController
       :name => 'Bluegrass BBQ',
       :likes => 10,
       :dislikes => 10,
-      :photos => [{:src=>"http://distilleryimage1.s3.amazonaws.com/e01489b0397611e3a94522000a1fbc56_8.jpg", :author=>"alexaviiii", :desc=>"🍟🍔#grill'd #burger #chips #healthyburger #맛있어😭", :link=>"http://instagram.com/p/fr9BWDyN1h/"}, {:src=>"http://distilleryimage6.s3.amazonaws.com/9dbf213cf4f411e1aaec22000a1e95c4_7.jpg", :author=>"cs_yap", :desc=>"#nasikunyit", :link=>"http://instagram.com/p/PEmloMBF02/"}]
+      :photos => [{:src=>"http://distilleryimage1.s3.amazonaws.com/e01489b0397611e3a94522000a1fbc56_8.jpg", :author=>"alexaviiii", :desc=>"#grill'd #burger #chips #healthyburger", :link=>"http://instagram.com/p/fr9BWDyN1h/"}, {:src=>"http://distilleryimage6.s3.amazonaws.com/9dbf213cf4f411e1aaec22000a1e95c4_7.jpg", :author=>"cs_yap", :desc=>"#nasikunyit", :link=>"http://instagram.com/p/PEmloMBF02/"}]
     }
   end
 
