@@ -26,6 +26,7 @@ class InstagramFetcher
   end
 
   def self.get_foursquare_venues(lat, long)
+    photos_added = 0
     venues = FoursquareFetcher.nearby_locations(lat, long)
     venues.each do |venue|
       response = InstagramFetcher.get_by_foursquare_id(venue['id'].to_i)
@@ -33,7 +34,9 @@ class InstagramFetcher
       if response
         instagram_location_id = response['id'].to_i
         photos = Instagram.location_recent_media(instagram_location_id, :count => 25)
-
+        photos.each |photo|
+            photos_added += 1 if InstagramFetcher.create_photo!(photo)
+        end
       end
     end
   end

@@ -7,6 +7,9 @@ class GeolocationsController < ApplicationController
     session[:lat] = params[:lat]
     session[:lng] = params[:lng]
 
+    # fixme: always?
+    InstagramFetcher.delay.get_foursquare_venues(session[:lat], session[:lng])
+
     redirect_to :action => 'index'
   end
 

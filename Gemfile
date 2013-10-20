@@ -56,6 +56,7 @@ group :development do
 end
 
 gem 'instagram'
+gem 'delayed_job_active_record'
 
 group :production do
   gem 'pg'
