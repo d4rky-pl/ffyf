@@ -1,5 +1,5 @@
 .mosaic
-  - (@photos*10).each_slice(6) do |slice|
+  - @photos.each_slice(6) do |slice|
     .row
       - slice.each do |photo|
         .place.col-md-2
