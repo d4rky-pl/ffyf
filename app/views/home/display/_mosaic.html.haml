@@ -1,6 +1,7 @@
 .row.mosaic
-  - @photos.each do |photo|
-    .place.col-md-2
-      %a.thumbnail{:href => "#{place_path(photo.place_id)}"}
-        %img{:src => photo.thumbnail_url}
-        %span.desc= photo.description
+  - @photos.each_slice(6) do |slice|
+    - slice.each do |photo|
+      .place.col-md-2
+        %a.thumbnail{:href => "#{place_path(photo.place_id)}"}
+          %img{:src => photo.thumbnail_url}
+          %span.desc= photo.description
