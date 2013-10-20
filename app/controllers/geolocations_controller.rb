@@ -29,6 +29,8 @@ class GeolocationsController < ApplicationController
               :address => result.formatted_address
           })
     end
+
+    render :json => session.to_json
   end
 
   private
