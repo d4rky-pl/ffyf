@@ -1,7 +1,7 @@
 %form{action: '/search', method: 'post'}
   .search-form.row
     .col-md-10.col-xs-8
-      %input.box{type: 'text', name: 'search'}
+      %input.box{type: 'text', name: 'search', :placeholder => "Please type location...", value: @current_address}
     .col-md-2.col-xs-4
       %button.btn.btn-primary{type: 'submit'} Look for food
 
