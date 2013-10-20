@@ -17,36 +17,52 @@ namespace :instagram do
       tags = categories.map(&:tag_list).inject([], :+)
     end
 
-    tags.each { |tag| get_tag(tag) }
+    last_photo = Photo.order('created_at DESC').first
+
+    tags.each { |tag| get_tag(tag, :since => last_photo.try(:created_at)) }
   end
 
-  def get_tag(tag)
-    puts "Getting tag: #{tag}"
-    results = InstagramFetcher.get_by_tag tag, :since => 1.month.ago
+  def get_tag(tag, opts={})
+    logger = File.open("#{Rails.root}/log/instagram_fetcher.log", "a")
+    logger.puts Time.now
+    logger.puts "Getting tag: #{tag}"
+    log_data = {all_photos: 0, no_location: 0, location: 0}
+    results = InstagramFetcher.get_by_tag tag, :since => opts[:since] || 1.month.ago
     tags = Category.reverse_hash
 
     results.each do |photo|
+      log_data[:all_photos] += 1
       place = create_place(photo.location)
       if place
-        begin
-          record = Photo.create!(
-              url: photo.link,
-              img_url: photo.images.standard_resolution.url,
-              username: photo.user.username,
-              description: photo.caption.try(:text),
-              place: place
-          )
+        log_data[:location] += 1
+        #begin
+        record = Photo.create!(
+            url: photo.link,
+            img_url: photo.images.standard_resolution.url,
+            lowres_url: photo.images.low_resolution.url,
+            thumbnail_url: photo.images.thumbnail.url,
+            username: photo.user.username,
+            description: photo.caption.try(:text),
+            place: place,
+            created_at: DateTime.strptime(photo.created_time, '%s')
+        )
 
-          photo.tags.each do |tag|
-            if tags[tag]
-              record.categories << Category.find_by_name(tags[tag])
-            end
+        photo.tags.each do |tag|
+          if tags[tag]
+            record.categories << Category.find_by_name(tags[tag])
           end
-        rescue
-          # photo might be redundant if with two supported tags
         end
+        #rescue
+        # photo might be redundant if with two supported tags
+        #end
+      else
+        log_data[:no_location] += 1
       end
     end
+
+    logger.print "All: #{log_data[:all_photos]} | "
+    logger.print "With location: #{log_data[:location]} | "
+    logger.puts "No location: #{log_data[:no_location]}"
   end
 
   def create_place(place)
@@ -66,4 +82,5 @@ namespace :instagram do
     end
     return nil
   end
+
 end
