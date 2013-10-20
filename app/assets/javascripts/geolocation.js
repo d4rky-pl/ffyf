@@ -9,18 +9,18 @@ $(function() {
     };
 
     var sendLocation = function() {
-        $.ajax({
-            type: "POST",
-            url: Routes.geolocations_path(),
-            data: located,
-            success: function(data) {
-                var $input = $('input[name=search]');
-                if($input.val() == '') {
+        var $input = $('input[name=search]');
+        if($input.val() == '') {
+            $.ajax({
+                type: "POST",
+                url: Routes.geolocations_path(),
+                data: located,
+                success: function(data) {
                     located.address = data.address;
                     $('input[name=search]').val(located.address);
                 }
-            }
-        })
+            })
+        }
     };
 
     var storeInCookie = function() {
