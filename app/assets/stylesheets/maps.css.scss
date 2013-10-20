@@ -5,3 +5,20 @@
 #map_container, #map_container div {
   overflow: visible;
 }
+
+.marker {
+  .name {
+    margin-bottom: 10px;
+    font-weight: bold;
+    display: block;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  img {
+    max-width: 213px;
+    height: auto;
+  }
+}
