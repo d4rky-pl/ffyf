@@ -114,7 +114,7 @@ CREATE TABLE photos (
     url character varying(255),
     img_url character varying(255),
     username character varying(255),
-    description character varying(255),
+    description text,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );
@@ -337,3 +337,5 @@ INSERT INTO schema_migrations (version) VALUES ('20131019151729');
 INSERT INTO schema_migrations (version) VALUES ('20131019222027');
 
 INSERT INTO schema_migrations (version) VALUES ('20131019224007');
+
+INSERT INTO schema_migrations (version) VALUES ('20131020001836');

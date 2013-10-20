@@ -22,7 +22,7 @@ namespace :instagram do
 
   def get_tag(tag)
     puts "Getting tag: #{tag}"
-    results = InstagramFetcher.get_by_tag tag, :since => 1.hours.ago
+    results = InstagramFetcher.get_by_tag tag, :since => 1.month.ago
     tags = Category.reverse_hash
 
     results.each do |photo|
@@ -33,7 +33,7 @@ namespace :instagram do
               url: photo.link,
               img_url: photo.images.standard_resolution.url,
               username: photo.user.username,
-              description: photo.caption.text,
+              description: photo.caption.try(:text),
               place: place
           )
 
