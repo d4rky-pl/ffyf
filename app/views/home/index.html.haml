@@ -34,8 +34,8 @@
           %a.btn{:href => "#{home_path(:list)}", :class => "#{(@display_type == :list && 'btn-success') || 'btn-default'}"}
             %i.glyphicon.glyphicon-th-list
 
-- if flash[:search]
-  .search-notification
+- if flash[:job_id]
+  .search-notification{:data => {:job_id => flash[:job_id]}}
     %p We are doing our best to provide you with best search results. Right now we are fetching more restaurants in the background. Refresh page after about a minute to check if we achieved anything of worth.
 
 = render :partial => "home/display/#{@display_type.to_s}"
