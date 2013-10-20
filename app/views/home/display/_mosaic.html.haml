@@ -1,6 +1,6 @@
 .row.mosaic
   - @photos.each do |photo|
-    .place
+    .place.col-md-2
       .thumbnail
         %img{:src => photo[:src]}
         %span.desc= photo[:desc]
