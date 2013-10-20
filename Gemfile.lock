@@ -45,7 +45,13 @@ GEM
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.1.0)
     coderay (1.1.0)
+    daemons (1.1.9)
     debug_inspector (0.0.2)
+    delayed_job (4.0.0)
+      activesupport (>= 3.0, < 4.1)
+    delayed_job_active_record (4.0.0)
+      activerecord (>= 3.0, < 4.1)
+      delayed_job (>= 3.0, < 4.1)
     devise (3.1.1)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -164,6 +170,8 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass-rails
   capistrano (~> 2.15)
+  daemons
+  delayed_job_active_record
   devise
   geocoder
   gmaps4rails

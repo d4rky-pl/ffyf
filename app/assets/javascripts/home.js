@@ -12,6 +12,7 @@ $(function() {
 
        // unfuck header
        $("#f-word").text("UCK");
+       $(".f-word").text("fuck");
        window.title = 'FUCK YEAH FAST FOOD - UNFUCKED EDITION';
    });
 });
