@@ -14,6 +14,11 @@ $(function() {
             vote($element, kind);
             markAsVoted($element)
         }
+
+        var tip_data = {'toggle': 'tooltip', 'title': 'You already voted'};
+
+        $element.data(tip_data).tooltip();
+        $element.siblings().first().data(tip_data).tooltip();
     });
 
     var voted_list = function() {
@@ -60,10 +65,7 @@ $(function() {
     }
 
     var markAsVoted = function($el) {
-        var tip_data = {'toggle': 'tooltip', 'title': 'You already voted'};
         $el.addClass('active');
-        $el.data(tip_data).tooltip();
-        $el.siblings().first().data(tip_data).tooltip();
         $el.off('click.vote');
     };
 
@@ -71,11 +73,9 @@ $(function() {
     var initialize = function() {
         var place_id = $('.place-info').data('id');
         var has_voted_on = alreadyVoted(place_id);
-        debugger;
         if(has_voted_on) {
             markAsVoted($('.' + has_voted_on));
         }
-
     }();
 
 
