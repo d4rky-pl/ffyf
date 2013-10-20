@@ -9,12 +9,12 @@ Jogger3::Application.routes.draw do
   get ':action' => 'home', :as => :home, :action => /(map|list|mosaic)/
   get 'place/:id' => 'home#place', :as => :place
 
-  resources :geolocations do
-    member do
-      post 'search'
-    end
-  end
+  get 'place/:id/like' => 'home#like_place'
+  get 'place/:id/dislike' => 'home#dislike_place'
 
+
+  resources :geolocations
+  post 'search' => 'geolocations#search'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

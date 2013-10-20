@@ -28,6 +28,16 @@ class HomeController < ApplicationController
     }
   end
 
+  # TODO: move some content to before filter
+  def like_place
+    place = Place.find(params[:id])
+
+  end
+
+  def dislike_place
+
+  end
+
   #helper_method :photos
   #def photos
   #  # cache for design purpose (until we implement everything properly)
