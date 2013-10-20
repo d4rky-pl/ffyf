@@ -1,4 +1,4 @@
 %div.marker
   %a{href: "#{place_path(place.id)}"}
     %span.name= place.name
-    %img{src: "#{place.photos.first.lowres_url}"}
+    %img{src: "#{place.photos.try(:first).try(:lowres_url)}"}
