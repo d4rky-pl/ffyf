@@ -1,0 +1,20 @@
+.places-list.row
+  - @places.each do |name, photos|
+    %a.place{:href => "#"}
+      .content{:class => "col-md-#{(photos.size < 3 && 12 - (photos.size*2)) || 6}"}
+        %span.inner
+          %h1= name
+          %span.desc
+            %span.likes
+              %i.glyphicon.glyphicon-heart
+              %b 20
+            %span.dislikes
+              %i.glyphicon.glyphicon-flash
+              %b 99+
+      - photos.sample(3).each do |photo|
+        .col-md-2
+          .thumbnail
+            %img{:src => photo[:src]}
+
+
+

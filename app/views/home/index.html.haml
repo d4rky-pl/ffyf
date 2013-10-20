@@ -25,13 +25,13 @@
         .col-md-4
           -# WARNING H4X
           -# use .btn-success as active state, NOT .active !
-          %a.btn.btn-success
+          %a.btn{:href => "#{home_path(:map)}", :class => "#{(@display_type == :map && 'btn-success') || 'btn-default'}"}
             %i.glyphicon.glyphicon-globe
         .col-md-4
-          %a.btn.btn-default
+          %a.btn{:href => "#{home_path(:mosaic)}", :class => "#{(@display_type == :mosaic && 'btn-success') || 'btn-default'}"}
             %i.glyphicon.glyphicon-picture
         .col-md-4
-          %a.btn.btn-default
+          %a.btn{:href => "#{home_path(:list)}", :class => "#{(@display_type == :list && 'btn-success') || 'btn-default'}"}
             %i.glyphicon.glyphicon-th-list
 
-!= @display
+= render :partial => "home/display/#{@display_type.to_s}"

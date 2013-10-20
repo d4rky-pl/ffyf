@@ -1,12 +1,10 @@
 .search-form {
   >.col-md-10 {
-    padding-right: 0;
     input {
       width: 100%;
     }
   }
   >.col-md-2 {
-    padding-left: 10px;
     button {
       width: 100%;
     }
@@ -16,7 +14,6 @@
 
 .navigation-form {
   >.col-md-10 {
-    padding-right: 0;
     .types {
 
       label {
@@ -50,7 +47,6 @@
     margin-bottom: 60px;
   }
   >.col-md-2 {
-    padding-left: 10px;
     >.row {
       >.col-md-4 {
         >a {
@@ -60,6 +56,119 @@
           padding: 0;
         }
       }
+    }
+  }
+}
+
+.mosaic {
+  .thumbnail {
+    margin-bottom: 10px;
+    position: relative;
+    overflow: hidden;
+
+    span.desc {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 0;
+      line-height: 40px;
+      text-align: center;
+      text-wrap: no-wrap;
+      text-overflow: ellipsis;
+      padding: 0 10px;
+      font-size: 12px;
+      background: rgba(0,0,0,0.85);
+      color: white;
+      font-weight: bold;
+      @include transition(all 0.1s linear);
+    }
+    &:hover {
+      span.desc {
+        height: 40px;
+      }
+    }
+  }
+}
+
+.places-list {
+  .place {
+    @include clearfix;
+    margin-bottom: 10px;
+    width: 100%;
+    display: block;
+
+    .content {
+
+      .inner {
+        display: block;
+        text-shadow: 0 2px 0 #000;
+        position: relative;
+        @include transition(all 0.1s linear);
+
+        &:hover {
+
+          h1 {
+            color: $brand-primary;
+          }
+
+          .desc {
+            .likes i {
+              color: saturate($brand-danger, 20%);
+            }
+            .dislikes i {
+              color: saturate($brand-warning, 20%);
+            }
+
+            .likes, .dislikes {
+              b {
+                color: #fff;
+              }
+            }
+          }
+        }
+
+        height: 182px;
+        color: white;
+
+        h1 {
+          @include transition(all 0.1s linear);
+          margin: 0; padding: 0;
+          font-size: 26px;
+          position: absolute;
+          left: 0;
+          top: 60px;
+        }
+        .desc {
+          display: block;
+          @include transition(all 0.1s linear);
+          position: absolute;
+          left: 0;
+          top: 85px;
+
+          .likes, .dislikes {
+            display: inline-block;
+
+            i {
+              font-size: 32px;
+              top: 8px;
+            }
+            b {
+              font-size: 16px;
+              font-weight: bold;
+            }
+
+            i, b {
+              @include transition(all 0.1s linear);
+              color: #888;
+            }
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+    .thumbnail {
+      display: inline-block;
+      float: right;
+      margin: 0;
     }
   }
 }
