@@ -9,7 +9,7 @@ Jogger3::Application.routes.draw do
   get ':action' => 'home', :as => :home, :action => /(map|list|mosaic)/
   get 'place/:id' => 'home#place', :as => :place
   get 'team' => 'home#team', :as => :team
-  get 'faq' => 'home#faq', :as => :faq
+  get 'raq' => 'home#raq', :as => :raq
   get 'contact' => 'home#contact', :as => :contact
 
   get 'place/:id/like' => 'home#like_place'
