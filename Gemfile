@@ -41,4 +41,5 @@ gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 gem 'sidekiq'
 gem 'sidekiq-status'
 gem 'yaml_db'
+gem 'whenever', :require => false
 # END CUSTOM

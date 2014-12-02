@@ -4,6 +4,7 @@ require 'mina/git'
 require 'mina/rbenv'
 require 'mina/puma'
 require 'mina_sidekiq/tasks'
+require 'mina/whenever'
 
 set :domain, 'arkham.higher.lv'
 set :user, 'app'
@@ -44,6 +45,8 @@ task deploy: :environment do
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
 
+    invoke :'whenever:clear'
+    invoke :'whenever:update'
     to :launch do
       invoke :'sidekiq:restart'
       invoke :'puma:restart'
