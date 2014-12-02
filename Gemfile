@@ -39,5 +39,6 @@ gem 'devise'
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 
 gem 'sidekiq'
+gem 'sidekiq-status'
 gem 'yaml_db'
 # END CUSTOM
