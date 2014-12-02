@@ -7,7 +7,7 @@
 vmconfig = {
   ip: '192.168.13.37',
 
-  apt: [],
+  apt: ['postgresql-contrib-9.4','postgresql-9.4-postgis-2.1'],
   
   services: [
     'redis-server',

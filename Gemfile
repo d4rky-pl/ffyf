@@ -25,6 +25,7 @@ gem 'gmaps4rails'
 group :development do
   gem "binding_of_caller"
   gem "better_errors"
+  gem "pry-rails"
 end
 
 gem 'instagram'
@@ -38,4 +39,5 @@ gem 'devise'
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 
 gem 'sidekiq'
+gem 'yaml_db'
 # END CUSTOM
