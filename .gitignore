@@ -19,3 +19,4 @@
 
 # Configuration files
 /config/database.yml
+.vagrant

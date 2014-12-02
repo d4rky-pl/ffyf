@@ -28,7 +28,6 @@ group :development do
 end
 
 gem 'instagram'
-gem 'delayed_job_active_record'
 gem 'daemons'
 
 group :production do
@@ -37,4 +36,6 @@ end
 
 gem 'devise'
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
+
+gem 'sidekiq'
 # END CUSTOM
