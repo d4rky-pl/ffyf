@@ -10,7 +10,7 @@ set :domain, 'arkham.higher.lv'
 set :user, 'app'
 
 set :deploy_to, '/home/app/ffyf'
-set :repository, 'git@bitbucket.org:d4rky-pl/fuckyeahfastfood/groop.git'
+set :repository, 'git@bitbucket.org:d4rky-pl/fuckyeahfastfood.git'
 
 set :branch, 'master'
 set :term_mode, :system
