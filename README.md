@@ -5,6 +5,8 @@ This application was written for Rails Rumble 2013 contest by Onion Vodka team.
 
 The source code for this app was written in about 24-30 hours (we had more than few vodkas and went to sleep for couple hours).
 
+Application is available on http://fuckyeahfastfood.com
+
 ## Onion Vodka Team
 
 - [Michał Matyas](http://nerdblog.pl)
