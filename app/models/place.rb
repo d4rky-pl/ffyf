@@ -1,7 +1,10 @@
 class Place < ActiveRecord::Base
   has_many :photos
+  has_one :latest_photo, -> { order(created_at: :desc) }, class_name: 'Photo'
 
   validates :id_instagram, uniqueness: true, presence: true
+
+  default_scope -> { order(created_at: :desc) }
 
   scope :close_to, lambda { |latitude, longitude, radius = 50000|
     where(%{
@@ -33,5 +36,9 @@ class Place < ActiveRecord::Base
   def fetch_address
     adr = Geocoder.search("#{self.lat},#{self.long}").try(:first).try(:formatted_address)
     self.address = adr
+  end
+
+  def thumbnail
+    latest_photo.try(:lowres_url) if latest_photo.present?
   end
 end

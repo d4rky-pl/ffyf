@@ -7,7 +7,7 @@ class HomeController < ApplicationController
 
   def mosaic
     @display_type = :mosaic
-    @places = session[:lat] && session[:lng] ? Place.closest_to(session[:lat], session[:lng]) : {}.as_json
+    @places = session[:lat] && session[:lng] ? Place.includes(:photos).closest_to(session[:lat], session[:lng]).limit(1000) : Place.none
     @photos = @places.map { |place| place.photos }.flatten.sort_by { rand }
     check_results(@places)
     render 'index'
@@ -15,24 +15,24 @@ class HomeController < ApplicationController
 
   def list
     @display_type = :list
-    @places = session[:lat] && session[:lng] ? Place.closest_to(session[:lat], session[:lng]) : {}.as_json
+    @places = session[:lat] && session[:lng] ? Place.includes(:photos).closest_to(session[:lat], session[:lng]).limit(1000) : Place.none
     check_results(@places)
     render 'index'
   end
 
   def map
     @map_data = if session[:lat] && session[:lng]
-                  places = Place.close_to(session[:lat], session[:lng])
+                  places = Place.includes(:latest_photo).close_to(session[:lat], session[:lng]).limit(1000)
                   if places.empty?
                     [{:lat => session[:lat], :lng => session[:lng]}].to_json
                   else
-                    Place.close_to(session[:lat], session[:lng]).to_gmaps4rails do |place, marker|
+                    places.to_gmaps4rails do |place, marker|
                       marker.infowindow render_to_string(:partial => "marker_template", :locals => {:place => place})
                     end
                   end
                 else
                   # manhattan
-                  Place.close_to(40.7902778, -73.9597222).to_gmaps4rails do |place, marker|
+                  Place.includes(:latest_photo).close_to(40.7902778, -73.9597222).limit(1000).to_gmaps4rails do |place, marker|
                     marker.infowindow render_to_string(:partial => "marker_template", :locals => {:place => place})
                   end
                 end
